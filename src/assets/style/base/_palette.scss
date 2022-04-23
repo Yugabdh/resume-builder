@@ -1,0 +1,45 @@
+/* SCSS RGB */
+$french-violet: rgba(111, 45, 189, 1);
+$amethyst: rgba(166, 99, 204, 1);
+$wisteria: rgba(178, 152, 220, 1);
+$light-steel-blue: rgba(184, 208, 235, 1);
+$celeste: rgba(185, 250, 248, 1);
+
+/* SCSS Gradient */
+$gradient-top: linear-gradient(0deg, #6f2dbdff, #a663ccff, #b298dcff, #b8d0ebff, #b9faf8ff);
+$gradient-right: linear-gradient(90deg, #6f2dbdff, #a663ccff, #b298dcff, #b8d0ebff, #b9faf8ff);
+$gradient-bottom: linear-gradient(180deg, #6f2dbdff, #a663ccff, #b298dcff, #b8d0ebff, #b9faf8ff);
+$gradient-left: linear-gradient(270deg, #6f2dbdff, #a663ccff, #b298dcff, #b8d0ebff, #b9faf8ff);
+$gradient-top-right: linear-gradient(45deg, #6f2dbdff, #a663ccff, #b298dcff, #b8d0ebff, #b9faf8ff);
+$gradient-bottom-right: linear-gradient(135deg, #6f2dbdff, #a663ccff, #b298dcff, #b8d0ebff, #b9faf8ff);
+$gradient-top-left: linear-gradient(225deg, #6f2dbdff, #a663ccff, #b298dcff, #b8d0ebff, #b9faf8ff);
+$gradient-bottom-left: linear-gradient(315deg, #6f2dbdff, #a663ccff, #b298dcff, #b8d0ebff, #b9faf8ff);
+$gradient-radial: radial-gradient(#6f2dbdff, #a663ccff, #b298dcff, #b8d0ebff, #b9faf8ff);
+
+$primary-0: $wisteria;
+$primary-1: $amethyst;
+$primary-2: $french-violet;
+
+$black-0: rgba(5, 0, 0, 1.0);
+$black-1: rgba(25, 25, 25, 1.0);
+
+$white-0: rgba(255, 255, 255, 1.0);
+$white-1: rgba(225, 232, 240, 1.0);
+
+/// Slightly lighten a color
+/// @access public
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function tint($color, $percentage) {
+    @return mix(white, $color, $percentage);
+}
+
+/// Slightly darken a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
