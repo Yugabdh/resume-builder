@@ -10,7 +10,7 @@ const CallToActionComponent = () => {
             <div className="call">
                 <p className="call-text">Boost your chances of getting that job you've been dreaming of</p>
             </div>
-            <div className="action"><Link to="/login" className="btn primary-button button-lg">Sign Up!</Link></div>
+            <div className="action"><Link to="/login" className="btn custom-button primary-button button-lg">Sign Up!</Link></div>
           </Container>
       </div>
     </section>

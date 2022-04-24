@@ -1,9 +1,14 @@
 import { initializeApp } from 'firebase/app';
 
 import { 
-  getAuth,
+  getAuth, 
+  createUserWithEmailAndPassword, 
+  updateProfile,
   onAuthStateChanged,
-  signOut
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut 
 } from 'firebase/auth';
 
 import { getFirestore } from 'firebase/firestore';
@@ -28,6 +33,11 @@ export const db = getFirestore(app);
 export {
   app,
   auth,
+  createUserWithEmailAndPassword, 
+  updateProfile,
   onAuthStateChanged,
-  signOut
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut 
 };

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateUserData } from '../../redux/userSlice';
+
+import { selectUser } from '../../redux/userSlice';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -13,14 +14,14 @@ const ProfileForm = () => {
   const [modalData, setModalData] = useState({});
   const [modalShow, setModalShow] = useState(false);
 
-  const userSlice = useSelector((state) => state.userSlice);
+  const user = useSelector(selectUser);
 
   // Form inputs
   const [values, setValues] = useState({
-    formFirstName: userSlice.userData? userSlice.userData.firstName? userSlice.userData.firstName: '': '',
-    formLastName: userSlice.userData? userSlice.userData.lastName? userSlice.userData.lastName: '': '',
-    formage: userSlice.userData? userSlice.userData.age? userSlice.userData.age: 18: 18,
-    formGender: userSlice.userData? userSlice.userData.gender? userSlice.userData.gender: '': '',
+    formFirstName: user.displayName.split(' ')[0],
+    formLastName: user.displayName.split(' ')[1],
+    formage: 18,
+    formGender: '',
   });
 
   // Errors values for input
@@ -33,7 +34,7 @@ const ProfileForm = () => {
     const lastName = values.formLastName;
     const age = values.formage;
     const gender = values.formGender;
-    dispatch(updateUserData({firstName, lastName, age, gender}));
+    // dispatch(updateUserData({firstName, lastName, age, gender}));
 
     setModalData({
       title: "Profile updated",
@@ -160,7 +161,7 @@ const ProfileForm = () => {
         </Row>
       </Form.Group>
 
-      <button type="submit" className="primary-button button-lg" >Update profile</button>
+      <button type="submit" className="custom-button primary-button button-lg">Update profile</button>
 
       {/* This modal will show up on error or otp send */}
       <VerticalCenteredModalComponent
@@ -168,9 +169,6 @@ const ProfileForm = () => {
         show={modalShow}
         onHide={() => setModalShow(false)}
       />
-      <div className="d-flex justify-content-center pt-3 bottom-link">
-        <Link to="/register">Create an account !</Link>
-      </div>
     </Form>
     </>
   );

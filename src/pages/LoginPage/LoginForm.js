@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 import Form from 'react-bootstrap/Form';
+import { BsGoogle } from "react-icons/bs";
+import Spinner from 'react-bootstrap/Spinner'
+
 import VerticalCenteredModalComponent from '../../components/VerticalCenteredModalComponent/';
-import { useNavigate } from "react-router-dom";
+
 import useForm from "../../hooks/useForm";
+import { useLoginUser } from '../../hooks/useLoginUser';
+
 import validate from './LoginFormValidationRules';
 
 
@@ -21,8 +27,36 @@ const LoginForm = () => {
     handleSubmit,
   } = useForm(login, validate);
 
+  const {
+    submitting,
+    usingPasswordSignIn,
+    usingGoogleSignUp,
+    loginWithEmail,
+    googleSignIn,
+  } = useLoginUser(values, passCallback);
+
   function login() {
-    console.log('No errors, submit callback called!');
+    loginWithEmail();
+  }
+
+  function passCallback(flag, msg) {
+    if(flag) {
+      setModalShow(flag);
+      if (msg ==='Firebase: Error (auth/wrong-password).') {
+        msg = 'Wrong password.'
+      } else if (msg ==='Firebase: Error (auth/user-not-found).') {
+        msg = 'This user is not a valid.'
+      }
+      setModalData({
+        title: "Error",
+        message: msg,
+        classname: "error"
+      });
+    } else {
+      if(msg === 'loggedIn') {
+        navigate("/dashboard", { replace: true });
+      }
+    }
   }
 
   return (
@@ -62,7 +96,12 @@ const LoginForm = () => {
 
       <hr />
 
-      <button type="submit" className="primary-button button-lg" >Sign In</button>
+      <button type="submit" className="custom-button primary-button button-lg" disabled={submitting || usingGoogleSignUp}>
+        { usingPasswordSignIn? <Spinner animation="border" variant="light" size="sm" />: ""}Sign In
+      </button>
+      <button type="button" onClick={() => googleSignIn()} className="custom-button danger-button button-lg mt-2" disabled={submitting || usingGoogleSignUp}>
+        { usingGoogleSignUp? <Spinner animation="border" variant="light" size="sm" />: ""}<BsGoogle /> &nbsp;Log in with Google
+      </button>
 
       {/* This modal will show up on error or otp send */}
       <VerticalCenteredModalComponent

@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { useLogoutUser } from '../../hooks/useLogoutUser';
+
 import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/userSlice';
 
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
@@ -10,17 +13,19 @@ import logoColor from '../../assets/img/svg/logo.svg';
 import logoWhite from '../../assets/img/svg/logo.svg';
 
 const NavbarComponent = () => {
-  const currentUser = false;
+  const user = useSelector(selectUser);
   const navigate = useNavigate();
 
-  async function handleSignOut() {
-    // try {
-    //   await logOut();
-    //   navigate("/", { replace: true });
-    // } catch {
-    //   console.log("error");
-    //   navigate("/", { replace: true });
-    // }
+  const {
+    logoutUser
+  } = useLogoutUser(handleSignOut);
+
+  function handleSignOut() {
+    try {
+      navigate("/", { replace: true });
+    } catch {
+      navigate("/", { replace: true });
+    }
   }
 
   const [scrollNav, setScrollNav] = useState(false);
@@ -42,20 +47,20 @@ const NavbarComponent = () => {
 
   const DisplayIfCurrentUser = ({children}) => {
     return (
-      currentUser ? children: ''
+      user ? children: ''
     );
   }
 
   const NotDisplayIfCurrentUser = ({children}) => {
     return (
-      !currentUser ? children: ''
+      !user ? children: ''
     );
   }
 
   return (
     <Navbar bg="light" variant="light" expand="lg" fixed="top" className={`${scrollNav || !transparent ? "" : "scrollNav"}`} onToggle={()=>setScrollNav(true)} collapseOnSelect={true}>
       <Container>
-        <Navbar.Brand as={Link} to={`${!currentUser ? "/" : "/dashboard"}`}>
+        <Navbar.Brand as={Link} to={`${!user ? "/" : "/dashboard"}`}>
           <img
             src={scrollNav || !transparent ? logoColor : logoWhite}
             width="30"
@@ -68,18 +73,19 @@ const NavbarComponent = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link as={NavLink} to="/faq" href="/faq">FAQ</Nav.Link>
               <NotDisplayIfCurrentUser>
                 <Nav.Link as={NavLink} to="/login" href="/login">Login</Nav.Link>
                 <Nav.Link as={NavLink} to="/register" href="/register">Register</Nav.Link>
               </NotDisplayIfCurrentUser>
               <DisplayIfCurrentUser>
                 <Nav.Link as={NavLink} to="/dashboard" href="/dashboard">Dashboard</Nav.Link>
+                <Nav.Link as={NavLink} to="/profile" href="/profile">Profile</Nav.Link>
               </DisplayIfCurrentUser>
+              <Nav.Link as={NavLink} to="/faq" href="/faq">FAQ</Nav.Link>
             </Nav>
             <Nav>
               <DisplayIfCurrentUser>
-                <button className="primary-button" onClick={ handleSignOut }>Log out</button>
+                <button className="custom-button primary-button" onClick={ logoutUser }>Log out</button>
               </DisplayIfCurrentUser>
             </Nav>
         </Navbar.Collapse>

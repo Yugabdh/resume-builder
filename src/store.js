@@ -5,6 +5,6 @@ import userSlice from './redux/userSlice';
 export default configureStore({
   reducer: {
     navbarTransparent: navbarTransparent,
-    userSlice: userSlice
+    user: userSlice
   },
 });

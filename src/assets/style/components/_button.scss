@@ -1,8 +1,6 @@
 @use '../base' as base;
 
-.primary-button {
-  background-color: base.$primary-2;
-  color: base.$white-0;
+.custom-button {
   border-radius: 100px;
   -webkit-border-radius: 100px;
   -moz-border-radius: 100px;
@@ -19,8 +17,6 @@
   -o-transition: transform 350ms ease, background-color 350ms ease, -webkit-transform 350ms ease;
 
   &:hover,&:focus {
-    background-color: base.shade(base.$primary-2, 20%);
-    color: base.shade(base.$white-0, 20%);
     transform: scale(0.95);
     -webkit-transform: scale(0.95);
     -moz-transform: scale(0.95);
@@ -29,31 +25,29 @@
   }
 }
 
-.primary-button.button-lg {
+.primary-button {
   background-color: base.$primary-2;
   color: base.$white-0;
-  border-radius: 100px;
-  -webkit-border-radius: 100px;
-  -moz-border-radius: 100px;
-  -ms-border-radius: 100px;
-  -o-border-radius: 100px;
-  font-weight: base.$semibold;
-  font-size: 1.2rem;
-  padding: 1rem 2rem;
-  border: 0;
-  transition: transform 350ms ease, background-color 350ms ease, -webkit-transform 350ms ease;
-  -webkit-transition: transform 350ms ease, background-color 350ms ease, -webkit-transform 350ms ease;
-  -moz-transition: transform 350ms ease, background-color 350ms ease, -webkit-transform 350ms ease;
-  -ms-transition: transform 350ms ease, background-color 350ms ease, -webkit-transform 350ms ease;
-  -o-transition: transform 350ms ease, background-color 350ms ease, -webkit-transform 350ms ease;
 
-  &:hover,&:focus {
+  &:hover,&:focus,
+  &:disabled, &[disabled] {
     background-color: base.shade(base.$primary-2, 20%);
     color: base.shade(base.$white-0, 20%);
-    transform: scale(0.95);
-    -webkit-transform: scale(0.95);
-    -moz-transform: scale(0.95);
-    -ms-transform: scale(0.95);
-    -o-transform: scale(0.95);
   }
+}
+
+.danger-button {
+  background-color: #dc3545;
+  color: base.$white-0;
+
+  &:hover, &:focus,
+  &:disabled, &[disabled] {
+    background-color: base.shade(#dc3545, 20%);
+    color: base.shade(base.$white-0, 20%);
+  }
+}
+
+.custom-button.button-lg {
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
 }

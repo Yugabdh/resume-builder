@@ -14,7 +14,7 @@ const HeroHeaderComponent = () => {
                 <h1 className="hero-header-title"> <br /><span className="highlight">Magic Resume</span></h1>
                 <p className="hero-header-description"><span>Magic Resume will help you build resume which will land you a job</span></p>
                 <div className="hero-header-call-to-action">
-                  <Link className="btn primary-button button-lg" to="/login">Create Resume</Link>
+                  <Link className="btn custom-button primary-button button-lg" to="/login">Create Resume</Link>
                 </div>
             </Col>
             <Col md={12} lg={6} className="d-none d-lg-block"></Col>

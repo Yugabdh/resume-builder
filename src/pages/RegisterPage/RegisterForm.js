@@ -1,13 +1,22 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
+import { BsGoogle } from "react-icons/bs";
+import Spinner from 'react-bootstrap/Spinner'
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+
 import useForm from '../../hooks/useForm';
+import { useRegisterUser } from '../../hooks/useRegisterUser';
+import { useLoginUser } from '../../hooks/useLoginUser';
+
 import validate from './RegisterFormValidationRules';
 
+import VerticalCenteredModalComponent from '../../components/VerticalCenteredModalComponent/';
+
 const RegisterForm = () => {
+  const navigate = useNavigate();
   const {
     values,
     errors,
@@ -15,10 +24,39 @@ const RegisterForm = () => {
     handleSubmit,
   } = useForm(register, validate);
 
-  function register() {
-    console.log('No errors, submit callback called!');
+  const {
+    submitting,
+    usingPasswordSignUp,
+    registerWithEmail,
+  } = useRegisterUser(values, passCallback);
+
+  const {
+    usingGoogleSignUp,
+    googleSignIn
+  } = useLoginUser(values, passCallback);
+
+  // Modal states
+  const [modalData, setModalData] = useState({});
+  const [modalShow, setModalShow] = useState(false);
+
+  function passCallback(flag, msg) {
+    if(flag) {
+      setModalShow(flag);
+      setModalData({
+        title: "Error",
+        message: msg,
+        classname: "error"
+      });
+    } else {
+      if(msg === 'loggedIn') {
+        navigate("/dashboard", { replace: true });
+      }
+    }
   }
 
+  function register() {
+    registerWithEmail();
+  }
   return (
     <Form onSubmit={handleSubmit} noValidate>
       <Form.Group className="mb-3">
@@ -110,10 +148,21 @@ const RegisterForm = () => {
 
       <hr />
 
-      <button type="submit" className="primary-button button-lg">Register</button>
+      <button type="submit" className="custom-button primary-button button-lg" disabled={submitting || usingGoogleSignUp}>
+        { usingPasswordSignUp? <Spinner animation="border" variant="light" size="sm" />: ""}Register
+      </button>
+      <button type="button" onClick={() => googleSignIn()} className="custom-button danger-button button-lg mt-2" disabled={submitting || usingGoogleSignUp}>
+        { usingGoogleSignUp? <Spinner animation="border" variant="light" size="sm" />: ""}<BsGoogle /> &nbsp;Log in with Google
+      </button>
       <div className="d-flex justify-content-center pt-3 bottom-link">
-        Alerdy Have account? {""}<Link to="/login"> Login here</Link>
+        Alerdy Have account? &nbsp;<Link to="/login"> Login here</Link>
       </div>
+      {/* This modal will show up on error or otp send */}
+      <VerticalCenteredModalComponent
+        data={modalData}
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
     </Form>
   );
 };

@@ -71,7 +71,7 @@ const Content = () => {
 
               <div className="contact-grid-1">
                 <div className="button-borders">
-                  <button className="primary-button">
+                  <button className="custom-button primary-button">
                     Send message !
                   </button>
                 </div>
