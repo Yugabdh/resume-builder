@@ -152,10 +152,10 @@ const RegisterForm = () => {
         { usingPasswordSignUp? <Spinner animation="border" variant="light" size="sm" />: ""}Register
       </button>
       <button type="button" onClick={() => googleSignIn()} className="custom-button danger-button button-lg mt-2" disabled={submitting || usingGoogleSignUp}>
-        { usingGoogleSignUp? <Spinner animation="border" variant="light" size="sm" />: ""}<BsGoogle /> &nbsp;Log in with Google
+        { usingGoogleSignUp? <Spinner animation="border" variant="light" size="sm" />: ""}<BsGoogle /> &nbsp;with Google
       </button>
       <div className="d-flex justify-content-center pt-3 bottom-link">
-        Alerdy Have account? &nbsp;<Link to="/login"> Login here</Link>
+        Have account? &nbsp;<Link to="/login"> Login here</Link>
       </div>
       {/* This modal will show up on error or otp send */}
       <VerticalCenteredModalComponent

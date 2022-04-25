@@ -100,7 +100,7 @@ const LoginForm = () => {
         { usingPasswordSignIn? <Spinner animation="border" variant="light" size="sm" />: ""}Sign In
       </button>
       <button type="button" onClick={() => googleSignIn()} className="custom-button danger-button button-lg mt-2" disabled={submitting || usingGoogleSignUp}>
-        { usingGoogleSignUp? <Spinner animation="border" variant="light" size="sm" />: ""}<BsGoogle /> &nbsp;Log in with Google
+        { usingGoogleSignUp? <Spinner animation="border" variant="light" size="sm" />: ""}<BsGoogle /> &nbsp;with Google
       </button>
 
       {/* This modal will show up on error or otp send */}

@@ -16,6 +16,12 @@
     overflow: hidden;
     background-attachment: fixed;
   }
+  @include base.respond-to(medium) {
+    height: 40vh;
+  }
+  @include base.respond-to(small) {
+    height: 40vh;
+  }
 }
 
 .hero-header-faq {
@@ -66,7 +72,7 @@
     .hero-header-content {
 
       .hero-header-title {
-        font-size: 2.5rem;
+        font-size: 2.1rem;
       }
   
       .hero-header-description {
