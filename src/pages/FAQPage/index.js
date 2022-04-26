@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { makeTransparent } from '../../redux/navbarTransparent';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Accordion from 'react-bootstrap/Accordion'
 
 const FAQPage = () => {
+  const dispatch = useDispatch();
+
+  // trigger on component mount
+  useEffect(() => {
+    dispatch(makeTransparent());
+  }, [dispatch]);
+
   return (
     <>
       <header className="view-faq">

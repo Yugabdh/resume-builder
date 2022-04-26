@@ -21,7 +21,7 @@ const useLoginUser = (values, callback) => {
     setUsingPasswordSignIn(true);
     setSubmitting(true);
     
-    signInWithEmailAndPassword(auth, values.formEmail, values.formPassword)
+    signInWithEmailAndPassword(auth, values.formEmail.trim(), values.formPassword.trim())
     .then((userAuth) => {
       dispatch(
         login({

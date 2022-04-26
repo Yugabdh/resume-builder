@@ -46,6 +46,8 @@ const LoginForm = () => {
         msg = 'Wrong password.'
       } else if (msg ==='Firebase: Error (auth/user-not-found).') {
         msg = 'This user is not a valid.'
+      } else if (msg ==='Firebase: Error (auth/invalid-email).') {
+        msg = 'This email is invalid.'
       }
       setModalData({
         title: "Error",

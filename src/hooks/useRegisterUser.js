@@ -19,17 +19,17 @@ const useRegisterUser = (values, callback) => {
   const registerWithEmail = () => {
     setUsingPasswordSignUp(true);
     setSubmitting(true);
-    createUserWithEmailAndPassword(auth, values.formEmail, values.formPassword)
+    createUserWithEmailAndPassword(auth, values.formEmail.trim(), values.formPassword.trim())
     .then((userAuth) => {
       updateProfile(userAuth.user, {
-        displayName: values.formFirstName+' '+values.formLastName,
+        displayName: values.formFirstName.trim()+' '+values.formLastName.trim(),
       })
       .then(
         dispatch(
           login({
             email: userAuth.user.email,
             uid: userAuth.user.uid,
-            displayName: values.formFirstName+' '+values.formLastName,
+            displayName: values.formFirstName.trim()+' '+values.formLastName.trim(),
           })
         )
       )
