@@ -17,7 +17,7 @@ const ExperiencePage = () => {
   const experienceForm = <ExperienceForm />;
 
   return(
-    <section className="profile-page">
+    <section className="education-page">
       <CardComponentWithHeading heading={<h3 className="card-heading">Work Experience</h3>} children={experienceForm} />
     </section>
   );

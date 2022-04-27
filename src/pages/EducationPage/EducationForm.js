@@ -5,7 +5,7 @@ import { selectEducation, setUserEducation } from '../../redux/userDetailsSlice'
 
 import useForm from "../../hooks/useForm";
 
-import Container from 'react-bootstrap/Container';
+import { MdDelete } from "react-icons/md";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -54,7 +54,7 @@ const EducationForm = () => {
   const [modalShow, setModalShow] = useState(false);
 
   const getDataFromFirebase = useCallback(async () => {
-    if (!education) {
+    if (education.length === 0) {
       setLoadingFromAPI(true);
       const q = query(collection(db, "users"), where("uid", "==", user.uid));
       getDocs(q)
@@ -105,11 +105,41 @@ const EducationForm = () => {
       setModalShow(true);
     }).finally(() => {
       setLoadingFromAPI(false);
+      setValues({})
     });
   }
 
-  // location api key
-  const [apiKey, setAPIKey] = useState();
+  const deleteCourse = async (event) => {
+    let toDelete = event.currentTarget.dataset.count;
+    let temp = [];
+    for(let i =0; i<education.length; i++) {
+      if(toDelete !== i) {
+        temp.push(education[i])
+      }
+    }
+    setLoadingFromAPI(true);
+    setDoc(doc(db, "users", user.uid), {
+      education : [
+        ...temp
+      ],
+    }, { merge: true })
+    .then(() => {
+      dispatch(setUserEducation([
+        ...temp,
+      ]));
+    })
+    .catch(err => {
+      setModalData({
+        title: "Error",
+        message: "Unknown error occurred",
+        classname: "error"
+      });
+      setModalShow(true);
+    }).finally(() => {
+      setLoadingFromAPI(false);
+      setValues({})
+    });
+  }
   return (
     <>
       {
@@ -119,6 +149,19 @@ const EducationForm = () => {
         (
           <>
             <Accordion defaultActiveKey={[]} alwaysOpen>
+              {
+                Array.isArray(education) ? education.map((item, idx) => (
+                  <Accordion.Item eventKey={idx} key={idx}>
+                    <Accordion.Header>{item.degree}</Accordion.Header>
+                    <Accordion.Body className="course-body">
+                      <button type="button" onClick={deleteCourse} data-count={idx} className="course-delete-button"><MdDelete /></button>
+                      <b className="course-degree">{item.degree}</b>
+                      <p className="pt-2 course-school">{item.school}</p>
+                      <p className="course-period">{item.startdate}-{item.enddate?item.enddate: 'Present'}</p>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                )): null
+              }
               <Accordion.Item eventKey="0">
                 <Accordion.Header>Add Education</Accordion.Header>
                 <Accordion.Body>

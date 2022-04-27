@@ -15,6 +15,30 @@
     box-shadow: none;
   }
 
+  .course-degree {
+    font-size: 1.4rem;
+    width: 100%;
+  }
+
+  .course-body {
+    position: relative;
+
+    .course-delete-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      border: 0;
+      background: transparent;
+      font-size: 1.4rem;
+      color: rgb(220,53,69);
+
+      .button-icon {
+        z-index: -1;
+      }
+    }
+  }
+
+
   form {
     input[type="text"],
     input[type="date"]{

@@ -6,6 +6,7 @@ export const userDetailsSlice = createSlice({
     userDetails: {
       profile: null,
       education: [],
+      experience: [],
     },
   },
   reducers: {
@@ -15,17 +16,23 @@ export const userDetailsSlice = createSlice({
     setUserEducation: (state, action) => {
       state.userDetails.education = action.payload;
     },
+    setUserExperience: (state, action) => {
+      state.userDetails.experience = action.payload;
+    },
     clearUserDetails: (state) => {
       state.userDetails.profile = null;
+      state.userDetails.education = [];
+      state.userDetails.experience = [];
     },
   },
 });
 
-export const { setUserProfile, setUserEducation, clearUserDetails } = userDetailsSlice.actions;
+export const { setUserProfile, setUserEducation, clearUserDetails, setUserExperience } = userDetailsSlice.actions;
 
 // selectors
 export const selectDetails = (state) => state.userDetails.userDetails;
 export const selectProfile = (state) => state.userDetails.userDetails.profile;
 export const selectEducation = (state) => state.userDetails.userDetails.education;
+export const selectExperience = (state) => state.userDetails.userDetails.experience;
 
 export default userDetailsSlice.reducer;
