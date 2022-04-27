@@ -5,7 +5,7 @@
   opacity: 0.8
 }
 
-.profile-page {
+.education-page {
   min-height: 100vh;
   padding-top: 140px;
   padding-bottom: 70px;
@@ -16,54 +16,6 @@
   }
 
   form {
-    .profile {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      .profile-pic {
-        border-radius: 50%;
-        height: 170px;
-        width: 170px;
-        margin: auto;
-        box-shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
-        background-size: cover;
-        background-position: center;
-        background-blend-mode: multiply;
-        vertical-align: middle;
-        text-align: center;
-        color: transparent;
-        transition: all .3s ease;
-        text-decoration: none;
-        cursor: pointer;
-      }
-      
-      .profile-pic:hover {
-        background-color: rgba(0,0,0,.5);
-        z-index: 10000;
-        color: #fff;
-        transition: all .3s ease;
-        text-decoration: none;
-      }
-
-      .profile-pic.uploading {
-        background-color: rgba(0,0,0,.5);
-        z-index: 10000;
-        color: #fff;
-        transition: all .3s ease;
-        text-decoration: none;
-      }
-      
-      .profile-pic span {
-        display: inline-block;
-        padding-top: 4.5em;
-      }
-      
-      input[type="file"] {
-        display: none;
-        cursor: pointer;
-      }
-    }
     input[type="text"],
     input[type="date"]{
       width: 100%;
@@ -108,39 +60,73 @@
       &.wrong-input {
         border: 1px solid rgb(220,53,69);
       }
+    }
 
-      /* Start by hiding the checkboxes*/
-      input[type=checkbox] {
-        visibility: hidden;
-      }
 
-      input[type=checkbox] {
-        visibility: hidden;
+    .form-check-custom {
+      font-size: 1.2rem;
+      line-height: 1.1;
+      display: grid;
+      grid-template-columns: 1em auto;
+      gap: 0.5em;
+    }
+    
+    .form-check-custom + .form-check-custom {
+      margin-top: 1em;
+    }
+    
+    .form-check-custom--disabled {
+      color: var(base.$primary-2);
+      cursor: not-allowed;
+    }
+    
+    input[type="checkbox"] {
+      /* Add if not using autoprefixer */
+      -webkit-appearance: none;
+      /* Remove most all native input styles */
+      appearance: none;
+      /* For iOS < 15 */
+      background-color: var(#959495);
+      /* Not removed via appearance */
+      margin: 0;
+    
+      font: inherit;
+      color: base.$primary-2;
+      width: 1.15em;
+      height: 1.15em;
+      border: 0.1em solid base.$black-1;
+      border-radius: 0.15em;
+      transform: translateY(-0.075em);
+    
+      display: grid;
+      place-content: center;
+      &.wrong-input {
+        border: 0.1em solid rgb(220,53,69);
       }
-
-      .checkbox-custom .form-check {
-        width: 45px;
-        height: 15px;
-        background: #555;
-        margin: 20px 10px;
-        position: relative;
-        border-radius: 5px;
-      }
-      .checkbox-custom .form-check label {
-        display: block;
-        width: 18px;
-        height: 18px;
-        border-radius: 50%;
-        transition: all .5s ease;
-        cursor: pointer;
-        position: absolute;
-        top: -2px;
-        left: -3px;
-        background: #ccc;
-      }
-      .checkbox-custom .form-check input[type=checkbox]:checked + label {
-        left: 27px;
-      }
+    }
+    
+    input[type="checkbox"]::before {
+      content: "";
+      width: 0.65em;
+      height: 0.65em;
+      clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+      transform: scale(0);
+      transform-origin: bottom left;
+      transition: 120ms transform ease-in-out;
+      box-shadow: inset 1em 1em var(base.$primary-2);
+      /* Windows High Contrast Mode */
+      background-color: base.$primary-2;
+    }
+    
+    input[type="checkbox"]:checked::before {
+      transform: scale(1);
+    }
+    
+    input[type="checkbox"]:disabled {
+      --form-control-color: var(--form-control-disabled);
+    
+      color: var(--form-control-disabled);
+      cursor: not-allowed;
     }
 
     .form-select {
@@ -224,10 +210,6 @@
     input:focus input::-webkit-input-placeholder, input::-moz-placeholder, input:-ms-input-placeholder, input:-o-input-placeholder {
       color: black;
       opacity: 1
-    }
-
-    .primary-button {
-      width: 100%;
     }
   }
 }

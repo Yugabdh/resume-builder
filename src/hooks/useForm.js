@@ -20,7 +20,15 @@ const useForm = (callback, validate) => {
 
   const handleChange = (event) => {
     event.persist();
-    setValues(values => ({ ...values, [event.target.name]: event.target.value }));
+    if(event.target.type === 'checkbox') {
+      if (event.target.checked === true) {
+        setValues(values => ({ ...values, [event.target.name]: true }));
+      } else {
+        setValues(values => ({ ...values, [event.target.name]: false }));
+      }
+    } else {
+      setValues(values => ({ ...values, [event.target.name]: event.target.value }));
+    }
   };
 
   return {

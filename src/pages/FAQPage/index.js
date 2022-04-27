@@ -34,7 +34,7 @@ const FAQPage = () => {
           <h1>FAQ</h1>
         </Container>
         <Container className="px-md-3 px-sm-0 content">
-          <Accordion defaultActiveKey={['0','1','2','3','4']} alwaysOpen>
+          <Accordion defaultActiveKey={['0']} alwaysOpen>
             <Accordion.Item eventKey="0">
               <Accordion.Header>What is a CV?</Accordion.Header>
               <Accordion.Body>

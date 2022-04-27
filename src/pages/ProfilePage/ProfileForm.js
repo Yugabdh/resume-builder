@@ -1,25 +1,14 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import useForm from "../../hooks/useForm";
-import CountryDropdown from './CountryDropDown';
-import StateDropdown from './StateDropDown';
-import CityDropDown from './CityDropDown';
-
 import { selectUser } from '../../redux/userSlice';
 import { selectProfile, setUserProfile } from '../../redux/userDetailsSlice';
 
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import { BsFillCameraFill } from "react-icons/bs";
-import VerticalCenteredModalComponent from '../../components/VerticalCenteredModalComponent/';
-import FullScreenLoaderComponent from '../../components/FullScreenLoaderComponent';
-import logoColor from '../../assets/img/png/logo.png';
+import useForm from "../../hooks/useForm";
 
-import validate from './ProfileFormValidationRules';
 import {
   db,
+  storage,
 } from '../../firebase';
 import {
   query,
@@ -28,10 +17,23 @@ import {
   where,
   setDoc,
   doc
- } from "firebase/firestore";
-import { storage } from '../../firebase';
+} from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import { BsFillCameraFill } from "react-icons/bs";
+
+import VerticalCenteredModalComponent from '../../components/VerticalCenteredModalComponent/';
+import FullScreenLoaderComponent from '../../components/FullScreenLoaderComponent';
+import CountryDropdown from './CountryDropDown';
+import StateDropdown from './StateDropDown';
+import CityDropDown from './CityDropDown';
+
+import logoColor from '../../assets/img/png/logo.png';
+
+import validate from './ProfileFormValidationRules';
 
 const ProfileForm = () => {
   const dispatch = useDispatch();
@@ -524,7 +526,7 @@ const ProfileForm = () => {
         
               <button type="submit" className="custom-button primary-button button-lg">Update profile</button>
         
-              {/* This modal will show up on error or otp send */}
+              {/* This modal will show up on error or success */}
               <VerticalCenteredModalComponent
                 data={modalData}
                 show={modalShow}

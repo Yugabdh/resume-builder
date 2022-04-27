@@ -17,7 +17,7 @@ const EducationPage = () => {
   const educationForm = <EducationForm />;
 
   return(
-    <section className="profile-page">
+    <section className="education-page">
       <CardComponentWithHeading heading={<h3 className="card-heading">Education and Qualifications</h3>} children={educationForm} />
     </section>
   );
