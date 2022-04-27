@@ -45,9 +45,11 @@ const LoginForm = () => {
       if (msg ==='Firebase: Error (auth/wrong-password).') {
         msg = 'Wrong password.'
       } else if (msg ==='Firebase: Error (auth/user-not-found).') {
-        msg = 'This user is not a valid.'
+        msg = 'This user is invalid.'
       } else if (msg ==='Firebase: Error (auth/invalid-email).') {
         msg = 'This email is invalid.'
+      } else if (msg ==='Firebase: Error (auth/email-already-in-use).') {
+        msg = 'The email already in use.'
       }
       setModalData({
         title: "Error",
@@ -66,7 +68,6 @@ const LoginForm = () => {
     <Form onSubmit={ handleSubmit } noValidate>
       <Form.Group className="mb-3">
         <Form.Control
-          autoComplete="off"
           type="email"
           placeholder="Enter email address"
           name="formEmail"

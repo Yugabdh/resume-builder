@@ -4,11 +4,23 @@ import {
   auth,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
-  signInWithPopup
+  signInWithPopup,
+  db,
 } from '../firebase';
+
+import {
+  query,
+  getDocs,
+  collection,
+  where,
+  setDoc,
+  doc
+ } from "firebase/firestore";
 
 import { useDispatch } from 'react-redux';
 import { login } from '../redux/userSlice';
+
+import { setUserProfile } from '../redux/userDetailsSlice';
 
 const useLoginUser = (values, callback) => {
   const dispatch = useDispatch();
@@ -30,6 +42,15 @@ const useLoginUser = (values, callback) => {
           displayName: userAuth.user.displayName,
         })
       );
+      const q = query(collection(db, "users"), where("uid", "==", userAuth.user.uid));
+      getDocs(q)
+        .then(docs => {
+          if (docs.docs.length === 1) {
+            dispatch(setUserProfile({
+              ...docs.docs[0].data().profile
+            }))
+          }
+        });
       callback(false, 'loggedIn');
     })
     .catch((error) => {
@@ -53,6 +74,32 @@ const useLoginUser = (values, callback) => {
           displayName: userAuth.user.displayName,
         })
       );
+      const q = query(collection(db, "users"), where("uid", "==", userAuth.user.uid));
+      getDocs(q)
+        .then(docs => {
+          if (docs.docs.length === 0) {
+            setDoc(doc(db, "users", userAuth.user.uid), {
+              uid: userAuth.user.uid,
+              displayName: userAuth.user.displayName,
+              email: userAuth.user.email,
+              profile : {
+                firstName: userAuth.user.displayName.split(" ")[0],
+                lastName: userAuth.user.displayName.split(" ")[1],
+                email: userAuth.user.email,
+              },
+            }).then(() => {
+              dispatch(setUserProfile({
+                firstName: userAuth.user.displayName.split(" ")[0],
+                lastName: userAuth.user.displayName.split(" ")[1],
+                email: userAuth.user.email,
+              }))
+            });
+          } else {
+            dispatch(setUserProfile({
+              ...docs.docs[0].data().profile
+            }))
+          }
+        });
       callback(false, 'loggedIn');
     }).catch((error) => {
       callback(true, error.message);

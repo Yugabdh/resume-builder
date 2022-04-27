@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 
 import { logout, selectUser } from '../redux/userSlice';
+import { clearUserDetails } from '../redux/userDetailsSlice';
 import { auth } from '../firebase';
 
 export const useLogoutUser = (callback) => {
@@ -9,6 +10,7 @@ export const useLogoutUser = (callback) => {
   const logoutUser = () => {
     if (user) {
       dispatch(logout());
+      dispatch(clearUserDetails());
       auth.signOut();
       callback();
     }

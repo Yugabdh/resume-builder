@@ -42,6 +42,16 @@ const RegisterForm = () => {
   function passCallback(flag, msg) {
     if(flag) {
       setModalShow(flag);
+
+      if (msg ==='Firebase: Error (auth/wrong-password).') {
+        msg = 'Wrong password.'
+      } else if (msg ==='Firebase: Error (auth/user-not-found).') {
+        msg = 'This user is invalid.'
+      } else if (msg ==='Firebase: Error (auth/invalid-email).') {
+        msg = 'This email is invalid.'
+      } else if (msg ==='Firebase: Error (auth/email-already-in-use).') {
+        msg = 'The email already in use.'
+      }
       setModalData({
         title: "Error",
         message: msg,

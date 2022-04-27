@@ -3,22 +3,25 @@ import { createSlice } from '@reduxjs/toolkit';
 export const userDetailsSlice = createSlice({
   name: 'userDetails',
   initialState: {
-    userDetails: null,
+    userDetails: {
+      profile: null,
+      education: null,
+    },
   },
   reducers: {
-    setUserDetails: (state, action) => {
-      state.userDetails = action.payload;
+    setUserProfile: (state, action) => {
+      state.userDetails.profile = action.payload;
     },
     clearUserDetails: (state) => {
-      state.userDetails = null;
+      state.userDetails.profile = null;
     },
   },
 });
 
-export const { setUserDetails, clearUserDetails } = userDetailsSlice.actions;
+export const { setUserProfile, clearUserDetails } = userDetailsSlice.actions;
 
 // selectors
-export const selectDetails = (state) => state.userDetails;
-export const selectProfile = (state) => state.userDetails.profile;
+export const selectDetails = (state) => state.userDetails.userDetails;
+export const selectProfile = (state) => state.userDetails.userDetails.profile;
 
 export default userDetailsSlice.reducer;
