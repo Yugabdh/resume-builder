@@ -80,6 +80,9 @@ const NavbarComponent = () => {
               <DisplayIfCurrentUser>
                 <Nav.Link as={NavLink} to="/dashboard" href="/dashboard">Dashboard</Nav.Link>
                 <Nav.Link as={NavLink} to="/profile" href="/profile">Profile</Nav.Link>
+                <Nav.Link as={NavLink} to="/education" href="/education">Education</Nav.Link>
+                <Nav.Link as={NavLink} to="/education" href="/education">Experience</Nav.Link>
+                <Nav.Link as={NavLink} to="/education" href="/education">Other Details</Nav.Link>
               </DisplayIfCurrentUser>
               <Nav.Link as={NavLink} to="/faq" href="/faq">FAQ</Nav.Link>
             </Nav>

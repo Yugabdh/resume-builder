@@ -95,6 +95,7 @@ const ProfileForm = () => {
         formLinkedIn: profile.linkedIn,
         formWebsite: profile.website
       })
+      setLoadingFromAPI(false);
     }
   }, []);
 
