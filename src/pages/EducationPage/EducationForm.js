@@ -47,6 +47,7 @@ const EducationForm = () => {
     errors,
     handleChange,
     handleSubmit,
+    setIsSubmitting,
   } = useForm(updateEducation, validate);
 
   // Modal states
@@ -110,7 +111,7 @@ const EducationForm = () => {
   }
 
   const deleteCourse = async (event) => {
-    let toDelete = event.currentTarget.dataset.count;
+    let toDelete = parseInt(event.currentTarget.dataset.count);
     let temp = [];
     for(let i =0; i<education.length; i++) {
       if(toDelete !== i) {
@@ -138,6 +139,7 @@ const EducationForm = () => {
     }).finally(() => {
       setLoadingFromAPI(false);
       setValues({})
+      setIsSubmitting(false);
     });
   }
   return (
@@ -157,7 +159,7 @@ const EducationForm = () => {
                       <button type="button" onClick={deleteCourse} data-count={idx} className="course-delete-button"><MdDelete /></button>
                       <b className="course-degree">{item.degree}</b>
                       <p className="pt-2 course-school">{item.school}</p>
-                      <p className="course-period">{item.startdate}-{item.enddate?item.enddate: 'Present'}</p>
+                      <p className="course-period">{item.startdate}<b>&nbsp;-&nbsp;</b>{item.enddate?item.enddate: 'Present'}</p>
                     </Accordion.Body>
                   </Accordion.Item>
                 )): null
