@@ -1,0 +1,182 @@
+.template1 {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+@media print {
+  .template1 div {
+    -webkit-column-break-inside: avoid;
+            break-inside: avoid;
+  }
+}
+
+.template1 .side-content {
+  width: 40%;
+  background-color: #003147;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.template1 .side-content hr {
+  border-top: 1px solid #ddd;
+  width: 75%;
+}
+
+.template1 .side-content .content-container .content-heading {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 14px;
+}
+
+.template1 .side-content .content-container .content-body .contact-items {
+  font-size: 14px;
+}
+
+.template1 .side-content .content-container .content-body .contact-items span {
+  color: #027FBD;
+}
+
+.template1 .side-content .content-container .content-body .contact-items a {
+  color: #fff;
+}
+
+.template1 .side-content .content-container .content-body .education-wrapper {
+  margin-bottom: 10px;
+}
+
+.template1 .side-content .content-container .content-body .education-wrapper .period {
+  color: #027FBD;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.template1 .side-content .content-container .content-body .education-wrapper .degree {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  font-weight: 500;
+}
+
+.template1 .side-content .content-container .content-body .education-wrapper .university {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  font-size: 14px;
+}
+
+.template1 .side-content .content-container .content-body .language-items {
+  text-transform: capitalize;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.template1 .side-content .profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.template1 .side-content .profile .thumbnail {
+  width: 160px;
+  height: 160px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5em;
+  border-radius: 100%;
+  -webkit-box-shadow: 0 13px 26px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 13px 26px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
+
+.template1 .side-content .profile .name {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 0;
+  color: #fff;
+}
+
+.template1 .main-content {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-left: 2rem;
+  padding-right: 4rem;
+}
+
+.template1 .main-content .content-container .content-heading {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #003147;
+  margin-top: 14px;
+}
+
+.template1 .main-content .content-container .content-body table {
+  page-break-inside: avoid;
+}
+
+.template1 .main-content .content-container .content-body .period-wrapper {
+  width: 15%;
+  vertical-align: top;
+}
+
+.template1 .main-content .content-container .content-body .period-wrapper .period {
+  text-transform: uppercase;
+}
+
+.template1 .main-content .content-container .content-body .period-wrapper .companyName {
+  text-transform: uppercase;
+}
+
+.template1 .main-content .content-container .content-body .position-wrapper {
+  vertical-align: top;
+  padding-left: 1rem;
+}
+
+.template1 .main-content .content-container .content-body .position-wrapper .position {
+  text-transform: uppercase;
+  color: #003147;
+  letter-spacing: 2px;
+}
+
+.template1 .main-content .content-container .content-body .skill-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 16px;
+}
+
+.template1 .main-content .content-container .content-body .skill-wrapper div p {
+  text-transform: uppercase;
+}
+/*# sourceMappingURL=App.css.map */

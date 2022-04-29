@@ -61,9 +61,11 @@ const EducationForm = () => {
       getDocs(q)
         .then(docs => {
           if(docs.docs.length>0) {
-            dispatch(setUserEducation([
-              ...docs.docs[0].data().education
-            ]));
+            if (docs.docs[0].data().education) {
+              dispatch(setUserEducation([
+                ...docs.docs[0].data().education
+              ]));
+            }
           }
         })
         .finally( () => {

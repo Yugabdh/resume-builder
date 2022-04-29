@@ -20,7 +20,15 @@ import {
 import { useDispatch } from 'react-redux';
 import { login } from '../redux/userSlice';
 
-import { setUserProfile } from '../redux/userDetailsSlice';
+import {
+  setUserProfile,
+  setUserEducation,
+  setUserExperience,
+  setUserAchievements,
+  setUserInterests,
+  setUserKnownlanguages,
+  setUserSkills,
+} from '../redux/userDetailsSlice';
 
 const useLoginUser = (values, callback) => {
   const dispatch = useDispatch();
@@ -46,9 +54,47 @@ const useLoginUser = (values, callback) => {
       getDocs(q)
         .then(docs => {
           if (docs.docs.length === 1) {
-            dispatch(setUserProfile({
-              ...docs.docs[0].data().profile
-            }))
+            if (docs.docs[0].data().profile) {
+              dispatch(setUserProfile({
+                ...docs.docs[0].data().profile
+              }))
+            }
+
+            if (docs.docs[0].data().education) {
+              dispatch(setUserEducation([
+                ...docs.docs[0].data().education
+              ]));
+            }
+
+            if(docs.docs[0].data().experience) {
+              dispatch(setUserExperience([
+                ...docs.docs[0].data().experience
+              ]));
+            }
+
+            if(docs.docs[0].data().achivements) {
+              dispatch(setUserAchievements([
+                ...docs.docs[0].data().achivements
+              ]));
+            }
+
+            if(docs.docs[0].data().interests) {
+              dispatch(setUserInterests([
+                ...docs.docs[0].data().interests
+              ]));
+            }
+
+            if(docs.docs[0].data().languages) {
+              dispatch(setUserKnownlanguages([
+                ...docs.docs[0].data().languages
+              ]));
+            }
+
+            if(docs.docs[0].data().skills) {
+              dispatch(setUserSkills([
+                ...docs.docs[0].data().skills
+              ]));
+            }
           }
         });
       callback(false, 'loggedIn');
@@ -95,9 +141,47 @@ const useLoginUser = (values, callback) => {
               }))
             });
           } else {
-            dispatch(setUserProfile({
-              ...docs.docs[0].data().profile
-            }))
+            if (docs.docs[0].data().profile) {
+              dispatch(setUserProfile({
+                ...docs.docs[0].data().profile
+              }))
+            }
+
+            if (docs.docs[0].data().education) {
+              dispatch(setUserEducation([
+                ...docs.docs[0].data().education
+              ]));
+            }
+
+            if(docs.docs[0].data().experience) {
+              dispatch(setUserExperience([
+                ...docs.docs[0].data().experience
+              ]));
+            }
+
+            if(docs.docs[0].data().achivements) {
+              dispatch(setUserAchievements([
+                ...docs.docs[0].data().achivements
+              ]));
+            }
+
+            if(docs.docs[0].data().interests) {
+              dispatch(setUserInterests([
+                ...docs.docs[0].data().interests
+              ]));
+            }
+
+            if(docs.docs[0].data().languages) {
+              dispatch(setUserKnownlanguages([
+                ...docs.docs[0].data().languages
+              ]));
+            }
+
+            if(docs.docs[0].data().skills) {
+              dispatch(setUserSkills([
+                ...docs.docs[0].data().skills
+              ]));
+            }
           }
         });
       callback(false, 'loggedIn');

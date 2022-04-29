@@ -18,13 +18,10 @@ import {
   setUserSkills,
 } from '../../redux/userDetailsSlice';
 
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-
 import { makeVisible } from '../../redux/navbarTransparent';
-import ProfileComponent from '../../components/ProfileComponent';
-import StatusDashboardComponent from '../../components/StatusDashboardComponent';
+import CardComponentWithHeading from '../../components/CardComponentWithHeading';
+import FullScreenLoaderComponent from '../../components/FullScreenLoaderComponent';
+import TemplatesForm from './TemplatesForm';
 
 import {
   db,
@@ -36,7 +33,7 @@ import {
   where
  } from "firebase/firestore";
 
-const DashboardPage = () => {
+const TemplatesPage = () => {
   const dispatch = useDispatch();
 
   // trigger on component mount
@@ -149,21 +146,27 @@ const DashboardPage = () => {
   useEffect(() => {
     getDataFromFirebase();
   }, [])
-
   return(
-    <section className="dashboard-section">
-      <Container>
-        <Row className="justify-content-center">
-          <Col sm={12} lg={4}>
-            <ProfileComponent loadingFromAPI={loadingFromAPI} userProfile={profile} user={user}/>
-          </Col>
-          <Col sm={12} lg={8} className="pt-5 pt-lg-0">
-            <StatusDashboardComponent loadingFromAPI={loadingFromAPI} completion={availableItems} />
-          </Col>
-        </Row>
-      </Container>
+    <section className="profile-page">
+      {loadingFromAPI ? (
+          <FullScreenLoaderComponent />
+        ) : (
+        <CardComponentWithHeading 
+          heading={<h3 className="card-heading">Templates</h3>} 
+          children={<TemplatesForm 
+            profile={profile}
+            education={education}
+            experience={experience}
+            achivements={achivements}
+            interests={interests}
+            languages={languages}
+            skills={skills}
+          />} 
+        />
+        )
+      }
     </section>
   );
 };
 
-export default DashboardPage;
+export default TemplatesPage;
