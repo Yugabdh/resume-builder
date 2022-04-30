@@ -8,6 +8,7 @@ import ProfilePage from './pages/ProfilePage';
 import EducationPage from './pages/EducationPage';
 import ExperiencePage from './pages/ExperiencePage';
 import OtherDetailsPage from './pages/OtherDetailsPage';
+import ResumesPage from './pages/ResumesPage';
 
 import RequireAuth from './components/RequireAuthComponent';
 import { Routes, Route } from 'react-router-dom';
@@ -20,6 +21,7 @@ const RoutesConfig = () => {
       <Route path="/faq" element={<FAQPage />} />
       <Route path="/dashboard" element={<RequireAuth><DashboardPage /></RequireAuth>} />
       <Route path="/template-generate" element={<RequireAuth><TemplatesPage /></RequireAuth>} />
+      <Route path="/resumes" element={<RequireAuth><ResumesPage /></RequireAuth>} />
       <Route path="/profile" element={<RequireAuth><ProfilePage /></RequireAuth>} />
       <Route path="/education" element={<RequireAuth><EducationPage /></RequireAuth>} />
       <Route path="/experience" element={<RequireAuth><ExperiencePage /></RequireAuth>} />

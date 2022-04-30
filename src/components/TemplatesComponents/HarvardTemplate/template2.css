@@ -1,0 +1,128 @@
+.template2 {
+  height: 100vh;
+  width: 100%;
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.template2 a {
+  text-decoration: none;
+}
+
+.template2 .profile-header {
+  background-color: #151B29;
+  height: 310px;
+  width: 100%;
+}
+
+.template2 .profile-header .profile-header-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.template2 .profile-header .profile-header-wrapper .thumbnail {
+  width: 160px;
+  height: 160px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5em;
+  border-radius: 100%;
+  -webkit-box-shadow: 0 13px 26px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 13px 26px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
+
+.template2 .profile-header .profile-header-wrapper .name {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 0;
+  color: #fff;
+}
+
+.template2 .profile-header .profile-header-wrapper .dob {
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 0;
+  color: #fff;
+}
+
+.template2 .profile-header .profile-header-wrapper .gender {
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 0;
+  color: #fff;
+}
+
+.template2 .template2-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.template2 .template2-main .side-content {
+  height: 100%;
+  width: 40%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.template2 .template2-main .main-content {
+  border-left: 1px solid #616161;
+  height: 100%;
+  width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.template2 .content-container .content-heading {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 16px;
+}
+
+.template2 .content-container .content-heading .heading-3 {
+  font-size: 16px;
+}
+
+.template2 .content-container .content-body .experience-name {
+  color: #2454da;
+  font-size: 14px;
+}
+
+.template2 .content-container .content-body ul {
+  -webkit-padding-start: 20px;
+          padding-inline-start: 20px;
+  list-style-type: circle;
+}
+
+.template2 .content-container .content-body .contact-items {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.template2 .content-container .content-body .contact-items span {
+  color: #027FBD;
+}
+
+.template2 .content-container .content-body .contact-items a {
+  color: #000;
+}

@@ -1,14 +1,8 @@
-import React, {useEffect} from 'react';
-import './App.css';
-import logo from './profile.png';
+import React from 'react';
+import './template1.css';
 import { IoCall, IoLink, IoLocationSharp, IoLogoLinkedin, IoMailSharp } from "react-icons/io5";
 
-export const StandForTemplate = React.forwardRef(({profile, education, experience, achivements, interests, languages, skills}, ref) => {
-  useEffect(() => {
-    skills.length > 0? skills.map((item, idx) => {
-      console.log(item)
-    }):console.log(1)
-  })
+export const StanfordTemplate = React.forwardRef(({profile, education, experience, achivements, interests, languages, skills}, ref) => {
   return (
     <div ref={ref} className="print">
       <div className="template1">
@@ -96,7 +90,7 @@ export const StandForTemplate = React.forwardRef(({profile, education, experienc
                           </p>
                         </td>
                       </tr>
-                    ):''
+                    ):null
                   }
                 </tbody>
               </table>

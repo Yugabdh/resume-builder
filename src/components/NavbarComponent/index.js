@@ -79,11 +79,12 @@ const NavbarComponent = () => {
               </NotDisplayIfCurrentUser>
               <DisplayIfCurrentUser>
                 <Nav.Link as={NavLink} to="/dashboard" href="/dashboard">Dashboard</Nav.Link>
-                <Nav.Link as={NavLink} to="/template-generate" href="/template-generate">Generate Template</Nav.Link>
+                <Nav.Link as={NavLink} to="/template-generate" href="/template-generate">Generate</Nav.Link>
                 <Nav.Link as={NavLink} to="/profile" href="/profile">Profile</Nav.Link>
                 <Nav.Link as={NavLink} to="/education" href="/education">Education</Nav.Link>
                 <Nav.Link as={NavLink} to="/experience" href="/experience">Experience</Nav.Link>
                 <Nav.Link as={NavLink} to="/other-details" href="/other-details">Other Details</Nav.Link>
+                <Nav.Link as={NavLink} to="/resumes" href="/resumes">Resumes</Nav.Link>
               </DisplayIfCurrentUser>
               <Nav.Link as={NavLink} to="/faq" href="/faq">FAQ</Nav.Link>
             </Nav>
