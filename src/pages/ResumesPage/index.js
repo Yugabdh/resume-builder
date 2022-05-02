@@ -54,7 +54,7 @@ const ResumesPage = () => {
   
   return (
     <section className="resumes-page">
-      <CardComponentWithHeading heading={<h3 className="card-heading">Pevious Resumes</h3>} children={<ResumesTableComponent storedResumes={storedResumes} loading={loading} />} />
+      <CardComponentWithHeading heading={<h3 className="card-heading">Previous Resumes</h3>} children={<ResumesTableComponent storedResumes={storedResumes} loading={loading} />} />
     </section>
   )
 }
