@@ -248,7 +248,6 @@ const ProfileForm = () => {
               })
               )
             });
-            console.log('File available at', downloadURL);
           });
         }
       );
